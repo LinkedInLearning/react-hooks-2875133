@@ -18,8 +18,10 @@ export default class ListTodos extends React.Component {
                 }
               />
 
-              {isCompleted && <strike>{title}</strike>}
-              {!isCompleted && <strong>{title}</strong>}
+              <div className="pad-left-10">
+                {isCompleted && <strike>{title}</strike>}
+                {!isCompleted && <strong>{title}</strong>}
+              </div>
             </label>
           </td>
           <td>{category}</td>
