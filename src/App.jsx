@@ -3,12 +3,14 @@ import ReactDOM from "react-dom";
 import { serverAddTodo } from "./mock-server/serverAddTodo";
 import { serverFetchTodos } from "./mock-server/serverFetchTodos";
 import { serverUpdateTodo } from "./mock-server/serverUpdateTodo";
+import { serverRemoveTodo } from "./mock-server/serverRemoveTodo";
 
-import { UserContext } from './UserContext';
+import { UserContext } from "./UserContext";
 
 import TodoHeader from "./TodoHeader";
-import TodoAdder from "./TodoAdder";
+import TodoInput from "./TodoInput";
 import ListTodos from "./ListTodos";
+import { randomId } from "./mock-server/util";
 class App extends React.Component {
   state = {
     todos: [], // initally empty
@@ -21,7 +23,8 @@ class App extends React.Component {
     });
   }
 
-  componentDidMount() { // useEffect, no Deps
+  componentDidMount() {
+    // useEffect, no Deps
     serverFetchTodos().then((allTodos) => {
       this.updateTodos(allTodos);
     });
@@ -31,7 +34,8 @@ class App extends React.Component {
     document.title = `Es gibt ${this.state.todos.length} Todos`;
   }
 
-  componentDidUpdate() { // useEffect, deps
+  componentDidUpdate() {
+    // useEffect, deps
     this.updatePageTitle();
   }
 
@@ -41,14 +45,14 @@ class App extends React.Component {
       {
         ...todoObj,
         isOptimistic: true,
+        id: randomId(), // satisfying reacts "key" requirement
       },
     ];
 
     this.updateTodos(optimisticTodos);
 
-    serverAddTodo(todoObj).then((updatedTodos) => {
-      this.updateTodos(updatedTodos);
-    });
+    serverAddTodo(todoObj)
+      .then(updatedTodos => this.updateTodos(updatedTodos));
   }
 
   setCompletionStateOfTodo(todoObj, isCompleted = false) {
@@ -57,9 +61,13 @@ class App extends React.Component {
       isCompleted,
     };
 
-    serverUpdateTodo(todoObj.id, updatedTodoObj).then((updatedTodos) => {
-      this.updateTodos(updatedTodos);
-    });
+    serverUpdateTodo(todoObj.id, updatedTodoObj)
+      .then(updatedTodos => this.updateTodos(updatedTodos));
+  }
+
+  removeTodo(todoId) {
+    serverRemoveTodo({ id: todoId })
+      .then(updatedTodos => this.updateTodos(updatedTodos));
   }
 
   get openTodos() {
@@ -77,7 +85,7 @@ class App extends React.Component {
 
         <TodoHeader todos={this.state.todos} />
 
-        <TodoAdder onAddTodo={(todoObj) => this.addNewTodo(todoObj)} />
+        <TodoInput onAddTodo={(todoObj) => this.addNewTodo(todoObj)} />
 
         {this.state.todos.length > 0 && (
           <table>
@@ -95,6 +103,7 @@ class App extends React.Component {
                 onSetCompletionState={(todoObj, completionState) =>
                   this.setCompletionStateOfTodo(todoObj, completionState)
                 }
+                onDeleteTodo={todoId => this.removeTodo(todoId)}
               />
 
               {/* Dann die bereits abgeschlossenen */}
@@ -103,6 +112,7 @@ class App extends React.Component {
                 onSetCompletionState={(todoObj, completionState) =>
                   this.setCompletionStateOfTodo(todoObj, completionState)
                 }
+                onDeleteTodo={todoId => this.removeTodo(todoId)}
               />
             </tbody>
           </table>

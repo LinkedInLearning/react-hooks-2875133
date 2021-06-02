@@ -1,5 +1,6 @@
 import React from "react";
-export default class TodoAdder extends React.Component {
+
+export default class TodoInput extends React.Component {
   state = {
     inputValue: "",
     selectValue: "Privat",

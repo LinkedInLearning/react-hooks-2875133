@@ -2,7 +2,7 @@ export const LOCALSTORAGE_KEY = 'lil-react-hooks-todos';
 
 export async function fakeWait(fnToExecute) {
     return new Promise(resolve => {
-        setTimeout(() => resolve(fnToExecute()), 250 + Math.floor(Math.random() * 200));
+        setTimeout(() => resolve(fnToExecute()), 150 + Math.floor(Math.random() * 200));
     });
 }
 
