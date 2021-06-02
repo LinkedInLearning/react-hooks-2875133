@@ -24,7 +24,6 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    // useEffect, no Deps
     serverFetchTodos().then((allTodos) => {
       this.updateTodos(allTodos);
     });
@@ -35,7 +34,6 @@ class App extends React.Component {
   }
 
   componentDidUpdate() {
-    // useEffect, deps
     this.updatePageTitle();
   }
 
