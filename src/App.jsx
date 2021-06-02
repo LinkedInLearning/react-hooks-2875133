@@ -11,6 +11,7 @@ import TodoHeader from "./TodoHeader";
 import TodoInput from "./TodoInput";
 import ListTodos from "./ListTodos";
 import { randomId } from "./mock-server/util";
+
 class App extends React.Component {
   state = {
     todos: [], // initally empty
