@@ -1,5 +1,5 @@
 # COURSENAME
-This is the repository for the LinkedIn Learning course `course-name`. The full course is available from [LinkedIn Learning][lil-course-url].
+This is the repository for the LinkedIn Learning course `React Hooks Essentials`. The full course is available from [LinkedIn Learning][lil-course-url].
 
 ![course-name-alt-text][lil-thumbnail-url] 
 
@@ -13,9 +13,13 @@ Some branches will have a beginning and an end state. These are marked with the 
 
 ## Installing
 1. To use these exercise files, you must have the following installed:
-	- [list of requirements for course]
-2. Clone this repository into your local machine using the terminal (Mac), CMD (Windows), or a GUI tool like SourceTree.
-3. [Course-specific instructions]
+	- npm (npx)
+1. Clone this repository into your local machine using the terminal (Mac), CMD (Windows), or a GUI tool like SourceTree.
+1. Run `npm i` to install the dependencies
+1. Run `npm start` to run the code 
+
+## Additional information
+The html uses a CDN to load the "Milligram" CSS framework and Roboto Font.
 
 
 [0]: # (Replace these placeholder URLs with actual course URLs)

@@ -1,0 +1,44 @@
+{
+  "name": "react-hooks-2875133",
+  "version": "1.0.0",
+  "description": "This is the repository for the LinkedIn Learning course `React Hooks Essentials`.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LinkedInLearning/react-hooks-2875133.git"
+  },
+  "scripts": {
+    "start": "webpack serve --host 0.0.0.0 --mode development"
+  },
+  "keywords": [],
+  "author": "David Lorenz <info@activenode.de>",
+  "private": true,
+  "bugs": {
+    "url": "https://github.com/LinkedInLearning/react-hooks-2875133/issues"
+  },
+  "homepage": "https://github.com/LinkedInLearning/react-hooks-2875133#readme",
+  "devDependencies": {
+    "@babel/core": "^7.14.0",
+    "@babel/plugin-proposal-class-properties": "^7.13.0",
+    "@babel/plugin-transform-runtime": "^7.14.3",
+    "@babel/preset-env": "^7.14.0",
+    "@babel/preset-react": "^7.13.13",
+    "babel-eslint": "^10.1.0",
+    "babel-loader": "^8.2.2",
+    "eslint": "^7.26.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "eslint-webpack-plugin": "^2.5.4",
+    "file-loader": "^6.2.0",
+    "html-webpack-plugin": "^5.3.1",
+    "node-sass": "^5.0.0",
+    "sass": "^1.32.12",
+    "sass-loader": "^11.0.1",
+    "webpack": "^5.36.1",
+    "webpack-cli": "^4.6.0",
+    "webpack-dev-server": "^3.11.2"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.14.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  }
+}
