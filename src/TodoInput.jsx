@@ -39,6 +39,7 @@ export default class TodoInput extends React.Component {
           </div>
           <div className="column column-25">
             <select
+              defaultValue={this.state.selectValue}
               onChange={(changeEvent) => this.updateSelectValue(changeEvent)}
             >
               <option value="Privat">Privat</option>
