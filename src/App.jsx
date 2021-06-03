@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import { serverAddTodo } from "./mock-server/serverAddTodo";
 import { serverFetchTodos } from "./mock-server/serverFetchTodos";
@@ -19,19 +19,19 @@ function App() {
     setTodos(updatedTodos);
   }
 
-  function componentDidMount() {
+  useEffect(() => {
     serverFetchTodos().then((allTodos) => {
       updateTodos(allTodos);
     });
-  }
+  }, []);
 
   function updatePageTitle() {
     document.title = `Es gibt ${todos.length} Todos`;
   }
 
-  function componentDidUpdate() {
+  useEffect(() => {
     updatePageTitle();
-  }
+  });
 
   function addNewTodo(todoObj) {
     const optimisticTodos = [
