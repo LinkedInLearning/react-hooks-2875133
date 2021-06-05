@@ -11,10 +11,12 @@ import TodoHeader from "./TodoHeader";
 import TodoInput from "./TodoInput";
 import ListTodos from "./ListTodos";
 import { randomId } from "./mock-server/util";
+import { useUpdatePageTitle } from "./hooks/custom-hooks";
 
 function App() {
   const [todos, setTodos] = useState([]); // initally empty
-
+  useUpdatePageTitle(todos);
+  
   function updateTodos(updatedTodos) {
     setTodos(updatedTodos);
   }
@@ -24,14 +26,6 @@ function App() {
       updateTodos(allTodos);
     });
   }, []);
-
-  function updatePageTitle() {
-    document.title = `Es gibt ${todos.length} Todos`;
-  }
-
-  useEffect(() => {
-    updatePageTitle();
-  });
 
   function addNewTodo(todoObj) {
     const optimisticTodos = [
