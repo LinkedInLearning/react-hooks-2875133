@@ -10,38 +10,11 @@ import { UserContext } from "./UserContext";
 import TodoHeader from "./TodoHeader";
 import TodoInput from "./TodoInput";
 import ListTodos from "./ListTodos";
-import { randomId } from "./mock-server/util";
-import { useUpdatePageTitle } from "./hooks/custom-hooks";
+import { useTodos, useUpdatePageTitle } from "./hooks/custom-hooks";
 
 function App() {
-  const [todos, setTodos] = useState([]); // initally empty
+  const [todos, addNewTodo, updateTodo, removeTodo, openTodos, completedTodos] = useTodos(); // initally empty
   useUpdatePageTitle(todos);
-  
-  function updateTodos(updatedTodos) {
-    setTodos(updatedTodos);
-  }
-
-  useEffect(() => {
-    serverFetchTodos().then((allTodos) => {
-      updateTodos(allTodos);
-    });
-  }, []);
-
-  function addNewTodo(todoObj) {
-    const optimisticTodos = [
-      ...todos,
-      {
-        ...todoObj,
-        isOptimistic: true,
-        id: randomId(), // satisfying reacts "key" requirement
-      },
-    ];
-
-    updateTodos(optimisticTodos);
-
-    serverAddTodo(todoObj)
-      .then(updatedTodos => updateTodos(updatedTodos));
-  }
 
   function setCompletionStateOfTodo(todoObj, isCompleted = false) {
     const updatedTodoObj = {
@@ -49,21 +22,7 @@ function App() {
       isCompleted,
     };
 
-    serverUpdateTodo(todoObj.id, updatedTodoObj)
-      .then(updatedTodos => updateTodos(updatedTodos));
-  }
-
-  function removeTodo(todoId) {
-    serverRemoveTodo({ id: todoId })
-      .then(updatedTodos => updateTodos(updatedTodos));
-  }
-
-  function openTodos() {
-    return todos.filter(({ isCompleted }) => isCompleted !== true);
-  }
-
-  function completedTodos() {
-    return todos.filter(({ isCompleted }) => isCompleted === true);
+    updateTodo(updatedTodoObj);
   }
 
   return (
@@ -86,7 +45,7 @@ function App() {
           <tbody>
             {/* Alle offenen Todos zuerst */}
             <ListTodos
-              todos={openTodos()}
+              todos={openTodos}
               onSetCompletionState={(todoObj, completionState) =>
                 setCompletionStateOfTodo(todoObj, completionState)
               }
@@ -95,7 +54,7 @@ function App() {
 
             {/* Dann die bereits abgeschlossenen */}
             <ListTodos
-              todos={completedTodos()}
+              todos={completedTodos}
               onSetCompletionState={(todoObj, completionState) =>
                 setCompletionStateOfTodo(todoObj, completionState)
               }
