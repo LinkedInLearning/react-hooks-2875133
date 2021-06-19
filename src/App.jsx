@@ -9,24 +9,20 @@ import ListTodos from "./ListTodos";
 import { useTodos, useUpdatePageTitle } from "./hooks/custom-hooks";
 
 function App() {
+  const inputField = useRef(null);
   const tbody = useRef(null);
   const [height, setHeight] = useState(null);
   const [todos, addNewTodo, updateTodo, removeTodo, openTodos, completedTodos] = useTodos(); // initally empty
   useUpdatePageTitle(todos);
 
-  //START: neu
+  //#region useLayoutEffect vs useEffect
   useLayoutEffect(() => {
     if (tbody.current && todos.length > 0) {
       setHeight(getComputedStyle(tbody.current).height);
     } else {
       setHeight(null);
     }
-
-    // Wann ist das Ganze sinnvoll?
-    // >> useRef ist vor allem sinnvoll bei forwarding bzw. verwendung externer libraries und komponenten
-
-    // useLayoutEffect hat sehr wenige echte use-cases da sie das vorhaben meistens auch anders lösen können.
-    console.log('Hallo useLayoutEffect!', tbody.current)
+    console.log('Hallo useLayoutEffect!', tbody.current);
   }, [todos]);
 
   useEffect(() => {
@@ -35,7 +31,7 @@ function App() {
     // }
     console.log('Hallo useEffect!')
   }, [todos]);
-  //ENDE: neu
+  //#endregion 
 
   function setCompletionStateOfTodo(todoObj, isCompleted = false) {
     const updatedTodoObj = {
@@ -52,7 +48,7 @@ function App() {
 
       <TodoHeader todos={todos} />
 
-      <TodoInput onAddTodo={(todoObj) => addNewTodo(todoObj)} />
+      <TodoInput ref={inputField} onAddTodo={(todoObj) => addNewTodo(todoObj)} />
 
       {height !== null ? <div>Aktuelle Höhe der Todo Elemente: {height}</div> : null}
       {todos.length > 0 && (
@@ -85,6 +81,8 @@ function App() {
           </tbody>
         </table>
       )}
+
+      <button role="button" className="button-outline" onClick={() => inputField.current.focus()}>Focus input field</button>
     </UserContext.Provider>
   );
 }
