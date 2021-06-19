@@ -1,10 +1,4 @@
-import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
-import { serverAddTodo } from "./mock-server/serverAddTodo";
-import { serverFetchTodos } from "./mock-server/serverFetchTodos";
-import { serverUpdateTodo } from "./mock-server/serverUpdateTodo";
-import { serverRemoveTodo } from "./mock-server/serverRemoveTodo";
-
 import { UserContext } from "./UserContext";
 
 import TodoHeader from "./TodoHeader";
