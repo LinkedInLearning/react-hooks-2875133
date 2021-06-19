@@ -1,9 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import ReactDOM from "react-dom";
-import { serverAddTodo } from "./mock-server/serverAddTodo";
-import { serverFetchTodos } from "./mock-server/serverFetchTodos";
-import { serverUpdateTodo } from "./mock-server/serverUpdateTodo";
-import { serverRemoveTodo } from "./mock-server/serverRemoveTodo";
 
 import { UserContext } from "./UserContext";
 
@@ -13,8 +9,33 @@ import ListTodos from "./ListTodos";
 import { useTodos, useUpdatePageTitle } from "./hooks/custom-hooks";
 
 function App() {
+  const tbody = useRef(null);
+  const [height, setHeight] = useState(null);
   const [todos, addNewTodo, updateTodo, removeTodo, openTodos, completedTodos] = useTodos(); // initally empty
   useUpdatePageTitle(todos);
+
+  //START: neu
+  useLayoutEffect(() => {
+    if (tbody.current && todos.length > 0) {
+      setHeight(getComputedStyle(tbody.current).height);
+    } else {
+      setHeight(null);
+    }
+
+    // Wann ist das Ganze sinnvoll?
+    // >> useRef ist vor allem sinnvoll bei forwarding bzw. verwendung externer libraries und komponenten
+
+    // useLayoutEffect hat sehr wenige echte use-cases da sie das vorhaben meistens auch anders lösen können.
+    console.log('Hallo useLayoutEffect!', tbody.current)
+  }, [todos]);
+
+  useEffect(() => {
+    // if (tbody.current) {
+    //   setHeight(getComputedStyle(tbody.current).height);
+    // }
+    console.log('Hallo useEffect!')
+  }, [todos]);
+  //ENDE: neu
 
   function setCompletionStateOfTodo(todoObj, isCompleted = false) {
     const updatedTodoObj = {
@@ -33,6 +54,7 @@ function App() {
 
       <TodoInput onAddTodo={(todoObj) => addNewTodo(todoObj)} />
 
+      {height !== null ? <div>Aktuelle Höhe der Todo Elemente: {height}</div> : null}
       {todos.length > 0 && (
         <table>
           <thead>
@@ -42,7 +64,7 @@ function App() {
               <th></th>
             </tr>
           </thead>
-          <tbody>
+          <tbody ref={tbody}>
             {/* Alle offenen Todos zuerst */}
             <ListTodos
               todos={openTodos}
