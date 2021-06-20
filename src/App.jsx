@@ -10,28 +10,8 @@ import { useTodos, useUpdatePageTitle } from "./hooks/custom-hooks";
 
 function App() {
   const inputField = useRef(null);
-  const tbody = useRef(null);
-  const [height, setHeight] = useState(null);
   const [todos, addNewTodo, updateTodo, removeTodo, openTodos, completedTodos] = useTodos(); // initally empty
   useUpdatePageTitle(todos);
-
-  //#region useLayoutEffect vs useEffect
-  useLayoutEffect(() => {
-    if (tbody.current && todos.length > 0) {
-      setHeight(getComputedStyle(tbody.current).height);
-    } else {
-      setHeight(null);
-    }
-    console.log('Hallo useLayoutEffect!', tbody.current);
-  }, [todos]);
-
-  useEffect(() => {
-    // if (tbody.current) {
-    //   setHeight(getComputedStyle(tbody.current).height);
-    // }
-    console.log('Hallo useEffect!')
-  }, [todos]);
-  //#endregion 
 
   function setCompletionStateOfTodo(todoObj, isCompleted = false) {
     const updatedTodoObj = {
@@ -50,7 +30,6 @@ function App() {
 
       <TodoInput ref={inputField} onAddTodo={(todoObj) => addNewTodo(todoObj)} />
 
-      {height !== null ? <div>Aktuelle Höhe der Todo Elemente: {height}</div> : null}
       {todos.length > 0 && (
         <table>
           <thead>
@@ -60,7 +39,7 @@ function App() {
               <th></th>
             </tr>
           </thead>
-          <tbody ref={tbody}>
+          <tbody>
             {/* Alle offenen Todos zuerst */}
             <ListTodos
               todos={openTodos}
