@@ -1,4 +1,4 @@
-import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
+import React from "react";
 import ReactDOM from "react-dom";
 
 import { UserContext } from "./UserContext";
@@ -9,7 +9,6 @@ import ListTodos from "./ListTodos";
 import { useTodos, useUpdatePageTitle } from "./hooks/custom-hooks";
 
 function App() {
-  const inputField = useRef(null);
   const [todos, addNewTodo, updateTodo, removeTodo, openTodos, completedTodos] = useTodos(); // initally empty
   useUpdatePageTitle(todos);
 
@@ -28,7 +27,7 @@ function App() {
 
       <TodoHeader todos={todos} />
 
-      <TodoInput ref={inputField} onAddTodo={(todoObj) => addNewTodo(todoObj)} />
+      <TodoInput onAddTodo={(todoObj) => addNewTodo(todoObj)} />
 
       {todos.length > 0 && (
         <table>
@@ -61,7 +60,11 @@ function App() {
         </table>
       )}
 
-      <button role="button" className="button-outline" onClick={() => inputField.current.focus()}>Focus input field</button>
+      <button role="button" 
+        className="button-outline" 
+        onClick={() => inputField.focus()}>
+          Springe ins Input-Feld
+      </button>
     </UserContext.Provider>
   );
 }

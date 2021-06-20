@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 
-// export default function TodoInput(props) {
-function TodoInput(props, ref) {
+export default function TodoInput(props) {
   const [inputValue, setInputValue] = useState("");
   const [selectValue, setSelectValue] = useState("Privat");
 
@@ -29,7 +28,6 @@ function TodoInput(props, ref) {
       <div className="row">
         <div className="column column-75">
           <input
-            ref={ref}
             value={inputValue}
             onChange={(changeEvent) => updateInputValue(changeEvent)}
             type="text"
@@ -51,5 +49,3 @@ function TodoInput(props, ref) {
     </form>
   );
 };
-
-export default React.forwardRef(TodoInput);
