@@ -1,4 +1,4 @@
-import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
+import React, { useRef } from "react";
 import ReactDOM from "react-dom";
 
 import { UserContext } from "./UserContext";
