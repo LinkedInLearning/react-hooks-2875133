@@ -7,7 +7,6 @@ export default React.forwardRef(function TodoInput(props, ref) {
   function submitTodo(submitEvent) {
     submitEvent.preventDefault();
     
-    // eslint-disable-next-line react/prop-types
     props.onAddTodo({
       title: inputValue,
       category: selectValue,
