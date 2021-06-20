@@ -9,9 +9,6 @@ import ListTodos from "./ListTodos";
 import { useTodos, useUpdatePageTitle } from "./hooks/custom-hooks";
 
 function App() {
-  const tableContainer = useRef(null);
-  const [tableHeight, setTableHeight] = useState(0);
-
   const inputFieldContainer = useRef(null);
   const inputField = inputFieldContainer.current;
 
@@ -27,13 +24,6 @@ function App() {
     updateTodo(updatedTodoObj);
   }
 
-  useLayoutEffect(() => {
-    if (tableContainer.current !== null) {
-      const { height } = window.getComputedStyle(tableContainer.current);
-      setTableHeight(height);
-    }
-  }, [todos]);
-
   return (
     <UserContext.Provider value="Mx Fisch">
       <h1>Meine Todo App</h1>
@@ -42,12 +32,8 @@ function App() {
 
       <TodoInput ref={inputFieldContainer} onAddTodo={(todoObj) => addNewTodo(todoObj)} />
 
-      <div hidden={tableHeight === 0} style={{ width: '100%', height: '500px', background: 'yellow'}}>
-        Höhe der Tabelle {tableHeight}
-      </div>
-
       {todos.length > 0 && (
-        <table ref={tableContainer}>
+        <table>
           <thead>
             <tr>
               <th className="span-100">Todo</th>
