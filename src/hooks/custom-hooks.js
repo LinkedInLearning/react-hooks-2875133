@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useDebugValue, useEffect, useState } from "react";
 import { serverAddTodo } from "../mock-server/serverAddTodo";
 import { serverFetchTodos } from "../mock-server/serverFetchTodos";
 import { serverRemoveTodo } from "../mock-server/serverRemoveTodo";
@@ -12,9 +12,8 @@ export function useUpdatePageTitle(todos) {
 }
 
 export function useTodos() {
-  //! Implement TODO MANAGEMENT here
-  // state, add, update, delete, fetching
   const [todos, setTodos] = useState([]); // initally empty
+  useDebugValue(todos.length);
 
   useEffect(() => {
     serverFetchTodos().then((allTodos) => {
