@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useReducer } from "react";
 import { serverAddTodo } from "../mock-server/serverAddTodo";
 import { serverFetchTodos } from "../mock-server/serverFetchTodos";
 import { serverRemoveTodo } from "../mock-server/serverRemoveTodo";
@@ -11,14 +11,22 @@ export function useUpdatePageTitle(todos) {
   });
 }
 
+function todoReducer(todos, action) {
+  switch (action.type) {
+    case "setTodos":
+      return action.todos; // dispatch({ type: 'setTodos', todos: ...})
+  }
+
+ throw new Error("type does not exist");
+}
+
 export function useTodos() {
-  //! Implement TODO MANAGEMENT here
-  // state, add, update, delete, fetching
-  const [todos, setTodos] = useState([]); // initally empty
+  // const [todos, setTodos] = useState([]); // initally empty
+  const [todos, dispatch] = useReducer(todoReducer, []);
 
   useEffect(() => {
     serverFetchTodos().then((allTodos) => {
-      setTodos(allTodos);
+      dispatch({ type: 'setTodos', todos: allTodos});
     });
   }, []);
 
@@ -32,20 +40,20 @@ export function useTodos() {
       },
     ];
 
-    setTodos(optimisticTodos);
+    dispatch({ type: 'setTodos', todos: optimisticTodos});
 
     serverAddTodo(todoObj)
-      .then(updatedTodos => setTodos(updatedTodos));
+      .then(updatedTodos => dispatch({ type: 'setTodos', todos: updatedTodos}));
   }
 
   function updateTodo(updatedTodoObj) {
     serverUpdateTodo(updatedTodoObj.id, updatedTodoObj)
-      .then(updatedTodos => setTodos(updatedTodos));
+      .then(updatedTodos => dispatch({ type: 'setTodos', todos: updatedTodos}));
   }
 
   function removeTodo(todoId) {
     serverRemoveTodo({ id: todoId })
-      .then(updatedTodos => setTodos(updatedTodos));
+      .then(updatedTodos => dispatch({ type: 'setTodos', todos: updatedTodos}));
   }
 
   const openTodos = todos.filter(({ isCompleted }) => isCompleted !== true);
