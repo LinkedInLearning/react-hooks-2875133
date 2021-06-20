@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import ReactDOM from "react-dom";
 
 import { UserContext } from "./UserContext";
@@ -9,6 +9,9 @@ import ListTodos from "./ListTodos";
 import { useTodos, useUpdatePageTitle } from "./hooks/custom-hooks";
 
 function App() {
+  const inputFieldContainer = useRef(null);
+  const inputField = inputFieldContainer.current;
+
   const [todos, addNewTodo, updateTodo, removeTodo, openTodos, completedTodos] = useTodos(); // initally empty
   useUpdatePageTitle(todos);
 
@@ -27,7 +30,7 @@ function App() {
 
       <TodoHeader todos={todos} />
 
-      <TodoInput onAddTodo={(todoObj) => addNewTodo(todoObj)} />
+      <TodoInput ref={inputFieldContainer} onAddTodo={(todoObj) => addNewTodo(todoObj)} />
 
       {todos.length > 0 && (
         <table>
