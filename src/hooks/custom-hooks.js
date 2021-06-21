@@ -1,4 +1,4 @@
-import { useContext, useDebugValue, useEffect } from "react";
+import { useCallback, useContext, useDebugValue, useEffect } from "react";
 import { serverAddTodo } from "../mock-server/serverAddTodo";
 import { serverFetchTodos } from "../mock-server/serverFetchTodos";
 import { serverRemoveTodo } from "../mock-server/serverRemoveTodo";
@@ -40,10 +40,10 @@ export function useTodos() {
       .then(updatedTodos => setTodos(updatedTodos));
   }
 
-  function updateTodo(updatedTodoObj) {
+  const updateTodo = useCallback(function (updatedTodoObj) {
     serverUpdateTodo(updatedTodoObj.id, updatedTodoObj)
       .then(updatedTodos => setTodos(updatedTodos));
-  }
+  }, []);
 
   function removeTodo(todoId) {
     serverRemoveTodo({ id: todoId })
