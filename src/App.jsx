@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import ReactDOM from "react-dom";
 
 import { UserContext } from "./UserContext";
@@ -7,13 +7,14 @@ import TodoHeader from "./TodoHeader";
 import TodoInput from "./TodoInput";
 import ListTodos from "./ListTodos";
 import { useTodos, useUpdatePageTitle } from "./hooks/custom-hooks";
+import { SharedState } from "./SharedState";
 
 function App() {
   const inputFieldContainer = useRef(null);
   const inputField = inputFieldContainer.current;
 
   const [todos, addNewTodo, updateTodo, removeTodo, openTodos, completedTodos] = useTodos(); // initally empty
-  useUpdatePageTitle(todos);
+  useUpdatePageTitle();
 
   function setCompletionStateOfTodo(todoObj, isCompleted = false) {
     const updatedTodoObj = {
@@ -72,4 +73,10 @@ function App() {
   );
 }
 
-ReactDOM.render(<App />, document.getElementById("app"));
+function RootComponent() {
+  const [state, setState] = useState([]);
+
+  return <SharedState.Provider value={[state, setState]}><App /></SharedState.Provider>
+}
+
+ReactDOM.render(<RootComponent />, document.getElementById("app"));
