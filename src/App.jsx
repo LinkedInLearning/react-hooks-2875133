@@ -9,19 +9,12 @@ import ListTodos from "./ListTodos";
 import { useTodos, useUpdatePageTitle } from "./hooks/custom-hooks";
 import { SharedState } from "./SharedState";
 
-let fn = null;
-
 function App() {
   const inputFieldContainer = useRef(null);
   const inputField = inputFieldContainer.current;
 
   const [todos, addNewTodo, updateTodo, removeTodo, openTodos, completedTodos] = useTodos(); // initally empty
   useUpdatePageTitle();
-
-  console.log('fn=', fn);
-  console.log('updateTodo=', updateTodo);
-  console.log('updateTodo=', updateTodo === fn);
-  fn = updateTodo;
 
   function setCompletionStateOfTodo(todoObj, isCompleted = false) {
     const updatedTodoObj = {
