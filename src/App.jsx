@@ -1,4 +1,6 @@
+import React from "react";
 import ReactDOM from "react-dom";
+
 import { UserContext } from "./UserContext";
 
 import TodoHeader from "./TodoHeader";
@@ -7,7 +9,7 @@ import ListTodos from "./ListTodos";
 import { useTodos, useUpdatePageTitle } from "./hooks/custom-hooks";
 
 function App() {
-  const [todos, addNewTodo, updateTodo, removeTodo, openTodos, completedTodos] = useTodos(); // initally empty
+  const [todos, addNewTodo, updateTodo, removeTodo, openTodos, completedTodos] = useTodos();
   useUpdatePageTitle(todos);
 
   function setCompletionStateOfTodo(todoObj, isCompleted = false) {

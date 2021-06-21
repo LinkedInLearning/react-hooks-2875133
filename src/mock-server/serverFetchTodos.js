@@ -1,4 +1,4 @@
-import { fakeWait, getAllTodosImmediately, LOCALSTORAGE_KEY, randomId } from "./util";
+import { fakeWait, getAllTodosImmediately } from "./util";
 
 /**
  * fetch all todos as an array 

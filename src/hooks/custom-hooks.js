@@ -12,9 +12,7 @@ export function useUpdatePageTitle(todos) {
 }
 
 export function useTodos() {
-  //! Implement TODO MANAGEMENT here
-  // state, add, update, delete, fetching
-  const [todos, setTodos] = useState([]); // initally empty
+  const [todos, setTodos] = useState([]);
 
   useEffect(() => {
     serverFetchTodos().then((allTodos) => {
@@ -53,4 +51,3 @@ export function useTodos() {
 
   return [todos, addNewTodo, updateTodo, removeTodo, openTodos, completedTodos];
 }
-
