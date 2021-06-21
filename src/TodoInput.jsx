@@ -4,6 +4,8 @@ import { useForm } from "react-hook-form";
 export default React.forwardRef(function TodoInput(props, ref) {
   const { register, handleSubmit, setValue } = useForm();
 
+  console.log('TodoInput render()');
+
   function submitTodo({ title, category }) {
     props.onAddTodo({
       title: title,

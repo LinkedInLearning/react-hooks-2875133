@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useMemo, useRef, useState } from "react";
 import ReactDOM from "react-dom";
 
 import { UserContext } from "./UserContext";
@@ -25,13 +25,15 @@ function App() {
     updateTodo(updatedTodoObj);
   }
 
+  const TodoInputMemo = useMemo(() => <TodoInput ref={inputFieldContainer} onAddTodo={(todoObj) => addNewTodo(todoObj)} />, []);
+
   return (
     <UserContext.Provider value="Mx Fisch">
       <h1>Meine Todo App</h1>
 
       <TodoHeader todos={todos} />
 
-      <TodoInput ref={inputFieldContainer} onAddTodo={(todoObj) => addNewTodo(todoObj)} />
+      {TodoInputMemo}
 
       {todos.length > 0 && (
         <table>
