@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import ReactDOM from "react-dom";
 import { serverAddTodo } from "./mock-server/serverAddTodo";
 import { serverFetchTodos } from "./mock-server/serverFetchTodos";
