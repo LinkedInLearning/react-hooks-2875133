@@ -1,4 +1,5 @@
 module.exports = {
+  parser: "@babel/eslint-parser",
   env: {
     browser: true,
     es2021: true,
@@ -14,5 +15,7 @@ module.exports = {
   plugins: ["react"],
   rules: {
     "react/prop-types": 0,
+    "no-unused-vars": "warn",
   },
 };
+
