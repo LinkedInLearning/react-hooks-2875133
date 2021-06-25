@@ -40,6 +40,11 @@ Dieses Problem lösen Sie wie folgt:
 
 **David Lorenz**
 
+Twitter: https://twitter.com/activenode
+Medium: https://medium.com/@activenode
+dev.to: https://dev.to/activenode/
+Website: https://activenode.de 
+
 _Frontend Architect_
 
 Sehen Sie sich andere Kurse des Autors auf <<<<Link aktualisieren>>>> [LinkedIn Learning](https://www.linkedin.com/learning/instructors/name_des_autors?u=104) an.
