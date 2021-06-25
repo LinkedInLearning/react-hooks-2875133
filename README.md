@@ -1,29 +1,48 @@
-# COURSENAME
-This is the repository for the LinkedIn Learning course `React Hooks Essentials`. The full course is available from [LinkedIn Learning][lil-course-url].
+# React Hooks Essentials
 
-![course-name-alt-text][lil-thumbnail-url] 
+Dies ist das Repository für den **LinkedIn Learning** Kurs React Hooks Essentials. Den gesamten Kurs finden Sie auf [LinkedIn Learning][lil-course-url].
 
-_See the readme file in the main branch for updated instructions and information._
-## Instructions
-This repository has branches for each of the videos in the course. You can use the branch pop up menu in github to switch to a specific branch and take a look at the course at that stage, or you can add `/tree/BRANCH_NAME` to the URL to go to the branch you want to access.
+[![React Hooks Essentials](COURSEIMAGE)](LICOURSEURL)
+
+[COURSEDESCRIPTION]
+
+## Anleitung
+
+Dieses Repository hat Branches für jedes Video im Kurs. Verwenden Sie das Ausklappmenü "Branch: ..." in GitHub um zwischen den unterschiedlichen Branches hin und her zu wechseln bzw. um bei einem spezifischen Status einzusteigen. Oder Sie fügen `/tree/BRANCH_NAME` der URL hinzu um direkt in den gewünschten Branch zu wechseln.
 
 ## Branches
-The branches are structured to correspond to the videos in the course. The naming convention is `CHAPTER#_MOVIE#`. As an example, the branch named `02_03` corresponds to the second chapter and the third video in that chapter. 
-Some branches will have a beginning and an end state. These are marked with the letters `b` for "beginning" and `e` for "end". The `b` branch contains the code as it is at the beginning of the movie. The `e` branch contains the code as it is at the end of the movie. The `main` branch holds the final state of the code when in the course.
 
-## Installing
-1. To use these exercise files, you must have the following installed:
-	- npm (npx)
-1. Clone this repository into your local machine using the terminal (Mac), CMD (Windows), or a GUI tool like SourceTree.
-1. Run `npm i` to install the dependencies
-1. Run `npm start` to run the code 
+Die Git Branches sind passend zu den Videos im Kurs strukturiert. Die Namenskonvention lautet `Kapitel#_Video#-name`. Der Branch `02_03-xyz` beinhaltet zum Beispiel den Code für das dritte Video im zweiten Kapitel. 
 
-## Additional information
-The html uses a CDN to load the "Milligram" CSS framework and Roboto Font.
+Alle Branches enthalten jeweils das Ergebnis des jeweiligen Videos. Die Ausgangsbasis ist das vorangegangene Video.
 
+Wenn Sie von einem Branch nach Änderungen zum nächsten Branch wechseln, erhalten Sie möglicherweise die folgende Meldung:
 
-[0]: # (Replace these placeholder URLs with actual course URLs)
+```
+error: Your local changes to the following files would be overwritten by checkout:        [files]
+Please commit your changes or stash them before you switch branches.
+Aborting
+```
 
-[lil-course-url]: https://www.linkedin.com/learning/
-[lil-thumbnail-url]: http://
+Dieses Problem lösen Sie wie folgt:
+    Add changes to git using this command: git add .
+    Commit changes using this command: git commit -m "some message"
 
+## Installation
+
+1. Um diese Übungsdateien nutzen zu können, müssen Sie folgendes installiert haben:
+   - `npm`
+   - `git` 
+2. Klonen Sie das Repository in Ihre lokale Maschine unter Verwendung von terminal (Mac), CMD (Windows) oder ein anderes Werkzeug mit grafischer Bedienoberfläche wie SourceTree.
+3. Stellen Sie sicher, dass sie bei jedem Wechsel in eine andere Branch ein `npm install` ausführen
+
+### Autor
+
+**David Lorenz**
+
+_Frontend Architect_
+
+Sehen Sie sich andere Kurse des Autors auf <<<<Link aktualisieren>>>> [LinkedIn Learning](https://www.linkedin.com/learning/instructors/name_des_autors?u=104) an.
+
+[lil-course-url]: https://www.linkedin.com/learning/building-a-graphql-project-with-react-js
+[lil-thumbnail-url]: https://cdn.lynda.com/course/2875095/2875095-1615224395432-16x9.jpg
