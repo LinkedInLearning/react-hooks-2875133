@@ -1,10 +1,10 @@
 # React Hooks Essentials
 
-Dies ist das Repository für den **LinkedIn Learning** Kurs React Hooks Essentials. Den gesamten Kurs finden Sie auf [LinkedIn Learning][lil-course-url].
+Dies ist das Repository für den **LinkedIn Learning** Kurs React Hooks Essentials. Den gesamten Kurs finden Sie auf [LinkedIn Learning](https://www.linkedin.com/learning/react-hooks-grundkurs/react-komponenten-schnell-und-einfach-implementieren).
 
-[![React Hooks Essentials](COURSEIMAGE)](LICOURSEURL)
+[React Hooks Essentials](https://media-exp1.licdn.com/dms/image/C4D0DAQFF1degqov-AQ/learning-public-crop_675_1200/0/1639377441096?e=1639483200&v=beta&t=msrYdOi67r2Hxij45Tkkz1DDXmJMMOAxhzRSnmEUyXw)
 
-[COURSEDESCRIPTION]
+React zählt durch seine Stabilität, Schnelligkeit und Vielfältigkeit zu den populärsten Frontend-Frameworks. Komponenten mussten bislang als Klasse geschrieben werden, doch steht seit der Einführung der React Hooks eine zweite, oft einfachere Variante, Komponenten zu implementieren, zur Verfügung. Was genau die React Hooks sind und wie sie eingesetzt werden, lernen Sie Schritt für Schritt in diesem Kurs: Sie erstellen eine Todo-Liste, passen diese mit Hilfe von React Hooks an und sehen so, wie man bestehende React-Klassenkomponenten als sogenannte Functional Components entsprechend umbaut.
 
 ## Anleitung
 
