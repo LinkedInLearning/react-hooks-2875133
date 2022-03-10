@@ -48,4 +48,4 @@ Website: https://activenode.de
 _Frontend Architect_
 
 [lil-course-url]: https://www.linkedin.com/learning/react-hooks-grundkurs
-[lil-thumbnail-url]: https://media-exp1.licdn.com/dms/image/C4D0DAQFF1degqov-AQ/learning-public-crop_675_1200/0/1639377441096?e=1639483200&v=beta&t=msrYdOi67r2Hxij45Tkkz1DDXmJMMOAxhzRSnmEUyXw
+[lil-thumbnail-url]: https://media-exp1.licdn.com/dms/image/C4D0DAQFF1degqov-AQ/learning-public-crop_675_1200/0/1639377441096?e=1646964000&v=beta&t=sE98nthBD-4IOOLnIbzUcUaa58ce4W0THAQlSZ8urxM
