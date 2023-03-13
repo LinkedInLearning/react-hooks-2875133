@@ -2,9 +2,9 @@
 
 Dies ist das Repository für den **LinkedIn Learning** Kurs React Hooks Essentials. Den gesamten Kurs finden Sie auf [LinkedIn Learning][lil-course-url].
 
-[![React Hooks Essentials](COURSEIMAGE)](LICOURSEURL)
+![React Hooks Essentials][lil-thumbnail-url] 
 
-[COURSEDESCRIPTION]
+React zählt durch seine Stabilität, Schnelligkeit und Vielfältigkeit zu den populärsten Frontend-Frameworks. Komponenten mussten bislang als Klasse geschrieben werden, doch steht seit der Einführung der React Hooks eine zweite, oft einfachere Variante, Komponenten zu implementieren, zur Verfügung. Was genau die React Hooks sind und wie sie eingesetzt werden, lernen Sie Schritt für Schritt in diesem Kurs: Sie erstellen eine Todo-Liste, passen diese mit Hilfe von React Hooks an und sehen so, wie man bestehende React-Klassenkomponenten als sogenannte Functional Components entsprechend umbaut.
 
 ## Anleitung
 
@@ -47,7 +47,5 @@ Website: https://activenode.de
 
 _Frontend Architect_
 
-Sehen Sie sich andere Kurse des Autors auf <<<<Link aktualisieren>>>> [LinkedIn Learning](https://www.linkedin.com/learning/instructors/name_des_autors?u=104) an.
-
-[lil-course-url]: https://www.linkedin.com/learning/building-a-graphql-project-with-react-js
-[lil-thumbnail-url]: https://cdn.lynda.com/course/2875095/2875095-1615224395432-16x9.jpg
+[lil-course-url]: https://www.linkedin.com/learning/react-hooks-grundkurs
+[lil-thumbnail-url]: https://cdn.lynda.com/course/2875133/2875133-1638882768893-16x9.jpg
